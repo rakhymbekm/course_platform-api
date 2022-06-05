@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+ Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.4" use-changelog="false" last-position="0,28" last-zoom="0.25" max-obj-count="8"
+	 default-schema="public" default-owner="postgres"
+	 layers="Default layer"
+	 active-layers="0"
+	 layer-name-colors="#000000"
+	 layer-rect-colors="#b4b4b4"
+	 show-layer-names="false" show-layer-rects="false">
+<database name="new_database" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" layers="0" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="user" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1920" y="360"/>
+	<column name="id" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="nickname" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="password" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="is_admin" not-null="true">
+		<type name="bool" length="0"/>
+	</column>
+	<constraint name="user_pk" type="pk-constr" table="public.&quot;user&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="course_chapter" layers="0" alias="cch" collapse-mode="1" max-obj-count="8" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1140" y="1240"/>
+	<column name="id" alias="cchid" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="title" alias="ccht" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="content">
+		<type name="text" length="0"/>
+	</column>
+	<column name="image_path" alias="cchimg">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="course_part_id" alias="cpid" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="no" alias="pr_ch_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="created_date" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="course_chapter_pk" type="pk-constr" table="public.course_chapter">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="course_chapter_user" layers="0" collapse-mode="2" max-obj-count="7" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1880" y="840"/>
+	<column name="id" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="user_id" alias="uid" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="course_chapter_id" alias="cchid" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="completed" not-null="true">
+		<type name="bool" length="0"/>
+	</column>
+	<column name="start_date" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<column name="complete_date">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="course_chapter_user_pk" type="pk-constr" table="public.course_chapter_user">
+		<columns names="user_id,course_chapter_id,id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="test" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="620" y="800"/>
+	<column name="id" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="title" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="course_chapter_id" alias="cpid" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="created_date" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="test_pk" type="pk-constr" table="public.test">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="test_questions" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="20" y="680"/>
+	<column name="id" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="title" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="test_id" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="created_date" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="test_questions_pk" type="pk-constr" table="public.test_questions">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="test_answers" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="100" y="1180"/>
+	<column name="id" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="title" not-null="true">
+		<type name="varchar" length="255"/>
+	</column>
+	<column name="correct" not-null="true">
+		<type name="bool" length="0"/>
+	</column>
+	<column name="question_id" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="created_date" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="test_answers_pk" type="pk-constr" table="public.test_answers">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="test_user" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1220" y="460"/>
+	<column name="id" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="user_id" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="test_id" not-null="true">
+		<type name="uuid" length="0"/>
+	</column>
+	<column name="attempts" not-null="true" default-value="1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="passed" not-null="true" default-value="'f'">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="passed_tests_pk" type="pk-constr" table="public.test_user">
+		<columns names="user_id,test_id,id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<constraint name="course_chapter_user_fk1" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;user&quot;" table="public.course_chapter_user">
+	<columns names="user_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="course_chapter_user_fk2" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.course_chapter" table="public.course_chapter_user">
+	<columns names="course_chapter_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="test_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.course_chapter" table="public.test">
+	<columns names="course_chapter_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="test_questions_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.test" table="public.test_questions">
+	<columns names="test_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="test_answers_fk" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.test_questions" table="public.test_answers">
+	<columns names="question_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="passed_tests_fk1" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.&quot;user&quot;" table="public.test_user">
+	<columns names="user_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="passed_tests_fk2" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.test" table="public.test_user">
+	<columns names="test_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_course_chapter_user_user" type="relfk" layers="0"
+	 src-table="public.course_chapter_user"
+	 dst-table="public.&quot;user&quot;" reference-fk="course_chapter_user_fk1"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_course_chapter_user_course_chapter" type="relfk" layers="0"
+	 src-table="public.course_chapter_user"
+	 dst-table="public.course_chapter" reference-fk="course_chapter_user_fk2"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_test_questions_test" type="relfk" layers="0"
+	 src-table="public.test_questions"
+	 dst-table="public.test" reference-fk="test_questions_fk"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_test_answers_test_questions" type="relfk" layers="0"
+	 src-table="public.test_answers"
+	 dst-table="public.test_questions" reference-fk="test_answers_fk"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_passed_tests_user" type="relfk" layers="0"
+	 src-table="public.test_user"
+	 dst-table="public.&quot;user&quot;" reference-fk="passed_tests_fk1"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_passed_tests_test" type="relfk" layers="0"
+	 src-table="public.test_user"
+	 dst-table="public.test" reference-fk="passed_tests_fk2"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_test_course_chapter" type="relfk" layers="0"
+	 src-table="public.test"
+	 dst-table="public.course_chapter" reference-fk="test_fk"
+	 src-required="false" dst-required="true"/>
+
+</dbmodel>
